@@ -8,7 +8,7 @@
         xmlns:icons="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance Type=vm:MainWindowViewModel, IsDesignTimeCreatable=True}"
-        Title="File Diff Viewer" Height="300" Width="600">
+        Title="File Diff Viewer" Height="386" Width="552">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -16,11 +16,8 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="2">
-            <Button Command="{Binding CustomCommand}">
-                <icons:PackIconFontAwesome Kind="RunningSolid"/>
-            </Button>
-            <Button Command="{Binding CustomCommand}" IsEnabled="False">
-                <icons:PackIconFontAwesome Kind="RunningSolid"/>
+            <Button Command="{Binding FindFilesDifferenseCommand}">
+                <icons:PackIconFontAwesome Kind="AdjustSolid"/>
             </Button>
         </StackPanel>
 
@@ -30,13 +27,17 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <cc:FileSelectControl Grid.Column="0" Title="Файл 1" />
-            
-            <cc:FileSelectControl Grid.Column="1" Title="Файл 2" />
+            <cc:FileSelectControl Grid.Row="0" Grid.Column="0" Title="Файл 1"
+                                  SelectedFileName="{Binding FilePath1}" />
+            <cc:FileSelectControl Grid.Row="0" Grid.Column="1" Title="Файл 2" 
+                                  SelectedFileName="{Binding FilePath2}" />
+
+            <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="2"/>
+
 
         </Grid>
     </Grid>

@@ -7,18 +7,64 @@
              xmlns:icons="http://metro.mahapps.com/winfx/xaml/iconpacks"
              d:Background="White"
              mc:Ignorable="d" 
-             d:DataContext="{d:DesignInstance Type=local:FileSelectControl, IsDesignTimeCreatable=True}"
-             Height="80" Width="128">
+             HorizontalAlignment="Stretch"
+             VerticalAlignment="Stretch"
+             d:DataContext="{d:DesignInstance Type=local:FileSelectControl, IsDesignTimeCreatable=True}">
     <Grid>
-        <StackPanel>
-            <TextBlock Text="{Binding Title}" 
-                       HorizontalAlignment="Center"
-                       FontWeight="Bold" 
-                       Foreground="Navy" 
-                       FontSize="15"/>
-            <Button Command="{Binding CustomCommand}">
-                <icons:PackIconFontAwesome Kind="FileCodeRegular"/>
-            </Button>
-        </StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="{Binding Title}" 
+                   HorizontalAlignment="Center"
+                   FontWeight="Bold" 
+                   Margin="0 4"
+                   Foreground="Navy" 
+                   FontSize="15"/>
+
+        <Button Grid.Row="1" Command="{Binding SelectFileCommand}">
+            <icons:PackIconFontAwesome Kind="FileCodeRegular"/>
+        </Button>
+
+        <TextBlock Grid.Row="2" Text="Выбранный файл" HorizontalAlignment="Center"/>
+        <TextBox Grid.Row="3" 
+                 BorderBrush="#D6BDD6"
+                 BorderThickness="0 0 0 1"
+                 Text="{Binding SelectedFileName}"
+                 IsReadOnly="True"
+                 Foreground="DarkGray"
+                 Margin="0 6 0 0"
+                 />
+
+        <Border Grid.Row="4" 
+                BorderBrush="White" 
+                BorderThickness="1"
+                Background="Navy" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ItemsControl ItemsSource="{Binding FileLines}" Foreground="Yellow">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox Text="{Binding LineNumber}" 
+                                       Foreground="#C66597"
+                                     Background="Transparent"
+                                     BorderThickness="0"
+                                       Width="20"
+                                       HorizontalAlignment="Stretch"
+                                     HorizontalContentAlignment="Right"
+                                       Margin="2 2 6 2" VerticalAlignment="Center" />
+                                <TextBlock Text="{Binding LineData}" Foreground="Yellow"  VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+            
+        </Border>
+
     </Grid>
 </UserControl>

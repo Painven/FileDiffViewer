@@ -10,10 +10,8 @@
                         <Border  x:Name="border"
                             Margin="{TemplateBinding Margin}"                                
                                 Background="Transparent"
-                                BorderBrush="#8994F7"
-                                Padding="5"
-                                BorderThickness="1"
-                                CornerRadius="3">
+                                BorderBrush="Transparent"
+                                Padding="5">
                             <ContentPresenter HorizontalAlignment="Center" 
                                           VerticalAlignment="Center" 
                                           Content="{TemplateBinding Content}" />
