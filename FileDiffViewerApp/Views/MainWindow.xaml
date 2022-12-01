@@ -1,0 +1,43 @@
+﻿<Window x:Class="FileDiffViewerApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:FileDiffViewerApp.ViewModels"
+        xmlns:cc="clr-namespace:FileDiffViewerApp.Views"
+        xmlns:icons="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=vm:MainWindowViewModel, IsDesignTimeCreatable=True}"
+        Title="File Diff Viewer" Height="300" Width="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="2">
+            <Button Command="{Binding CustomCommand}">
+                <icons:PackIconFontAwesome Kind="RunningSolid"/>
+            </Button>
+            <Button Command="{Binding CustomCommand}" IsEnabled="False">
+                <icons:PackIconFontAwesome Kind="RunningSolid"/>
+            </Button>
+        </StackPanel>
+
+        <Grid Grid.Row="1" Margin="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <cc:FileSelectControl Grid.Column="0" Title="Файл 1" />
+            
+            <cc:FileSelectControl Grid.Column="1" Title="Файл 2" />
+
+        </Grid>
+    </Grid>
+</Window>

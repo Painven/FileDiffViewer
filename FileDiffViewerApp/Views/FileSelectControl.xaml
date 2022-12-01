@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="FileDiffViewerApp.Views.FileSelectControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FileDiffViewerApp.Views"
+             xmlns:icons="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             d:Background="White"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=local:FileSelectControl, IsDesignTimeCreatable=True}"
+             Height="80" Width="128">
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="{Binding Title}" 
+                       HorizontalAlignment="Center"
+                       FontWeight="Bold" 
+                       Foreground="Navy" 
+                       FontSize="15"/>
+            <Button Command="{Binding CustomCommand}">
+                <icons:PackIconFontAwesome Kind="FileCodeRegular"/>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>
